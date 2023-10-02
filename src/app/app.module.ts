@@ -16,7 +16,7 @@ import { httpInterceptorProviders } from './interceptors/app-http-interceptors';
 import { reducers } from './store/reducers';
 
 import localeEs from '@angular/common/locales/es';
-import { LoaderFacadeService } from './store/services/loader.facade.service';
+import { LoaderFacadeService } from './services/loader.facade.service';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({

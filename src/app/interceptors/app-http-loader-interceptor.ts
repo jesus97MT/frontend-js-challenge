@@ -7,7 +7,7 @@ import {
 import { Injectable } from '@angular/core';
 import { finalize, Observable } from 'rxjs';
 
-import { LoaderFacadeService } from '../store/services/loader.facade.service';
+import { LoaderFacadeService } from '../services/loader.facade.service';
 
 @Injectable()
 export class AppHttpLoaderInterceptor implements HttpInterceptor {

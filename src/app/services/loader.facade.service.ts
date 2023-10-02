@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { updateLoaderState } from '../actions/loader.actions';
+import { updateLoaderState } from '../store/actions/loader.actions';
 
 @Injectable()
 export class LoaderFacadeService {

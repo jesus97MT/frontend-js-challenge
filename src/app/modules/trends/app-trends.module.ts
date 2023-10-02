@@ -9,8 +9,9 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { TrendDetailComponent } from './components/trend-detail/trend-detail.component';
 import { TrendService } from './services/trend.service';
 import { TrendsListComponent } from './components/trends-list/trends-list.component';
-import { trendsEffects } from './store/effects';
 import { trendsFeatureKey, trendsReducer } from './store/reducers';
+import { trendsEffects } from './store/effects';
+import { TrendFacadeService } from './services/trend.facade.service';
 
 @NgModule({
   declarations: [TrendsListComponent, TrendDetailComponent],
@@ -24,6 +25,7 @@ import { trendsFeatureKey, trendsReducer } from './store/reducers';
   exports: [TrendsListComponent],
   providers: [
     TrendService,
+    TrendFacadeService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
