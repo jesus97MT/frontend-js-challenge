@@ -7,12 +7,12 @@ import { registerLocaleData } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layout';
-import { AppMenuModule } from './menu';
-import { AppPageNotFoundComponent } from './app-page-not-found.component';
-import { AppProgressBarComponent } from './app-progress-bar.component';
+import { AppMenuModule } from './modules/menu';
+import { AppPageNotFoundComponent } from './components/app-page-not-found/app-page-not-found.component';
+import { AppProgressBarComponent } from './components/app-progress-bar/app-progress-bar.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AppTrendsModule } from './trends';
-import { httpInterceptorProviders } from './app-http-interceptors';
+import { AppTrendsModule } from './modules/trends';
+import { httpInterceptorProviders } from './interceptors/app-http-interceptors';
 import { reducers } from './store/reducers';
 
 import localeEs from '@angular/common/locales/es';
@@ -32,7 +32,7 @@ registerLocaleData(localeEs, 'es');
     AppMenuModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }, httpInterceptorProviders],
   bootstrap: [AppComponent],
