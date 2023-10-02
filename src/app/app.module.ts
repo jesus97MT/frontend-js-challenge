@@ -6,7 +6,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { registerLocaleData } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { AppLayoutModule } from './layout';
+import { AppLayoutModule } from './shared/layout';
 import { AppMenuModule } from './modules/menu';
 import { AppPageNotFoundComponent } from './components/app-page-not-found/app-page-not-found.component';
 import { AppProgressBarComponent } from './components/app-progress-bar/app-progress-bar.component';
@@ -16,6 +16,7 @@ import { httpInterceptorProviders } from './interceptors/app-http-interceptors';
 import { reducers } from './store/reducers';
 
 import localeEs from '@angular/common/locales/es';
+import { LoaderFacadeService } from './store/services/loader.facade.service';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -34,7 +35,11 @@ registerLocaleData(localeEs, 'es');
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es' }, httpInterceptorProviders],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es' },
+    httpInterceptorProviders,
+    LoaderFacadeService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

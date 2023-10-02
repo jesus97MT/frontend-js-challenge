@@ -1,10 +1,10 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
 
-import { CustomBreakpointObserver } from './custom-breakpoint-observer';
+import { CustomBreakpointFacadeService } from './services/custom-breakpoint.facade.service';
 
 @NgModule({
   imports: [LayoutModule],
-  providers: [CustomBreakpointObserver],
+  providers: [CustomBreakpointFacadeService],
 })
 export class AppLayoutModule {}

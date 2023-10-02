@@ -5,26 +5,21 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { finalize, Observable } from 'rxjs';
 
-import { updateLoaderState } from '../store/actions/loader.actions';
+import { LoaderFacadeService } from '../store/services/loader.facade.service';
 
 @Injectable()
 export class AppHttpLoaderInterceptor implements HttpInterceptor {
-  constructor(private store: Store) {}
+  constructor(private loaderFacadeService: LoaderFacadeService) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    this.store.dispatch(updateLoaderState({ isLoading: true }));
+    this.loaderFacadeService.updateLoaderState(true);
     return next
       .handle(req)
-      .pipe(
-        finalize(() =>
-          this.store.dispatch(updateLoaderState({ isLoading: false }))
-        )
-      );
+      .pipe(finalize(() => this.loaderFacadeService.updateLoaderState(false)));
   }
 }

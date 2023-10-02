@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { AppLayoutModule } from '../../layout';
+import { AppLayoutModule } from '../../shared/layout';
 import { AppRoutingModule } from '../../app-routing.module';
 import { MenuLargeComponent } from './components/menu-large/menu-large.component';
 import { MenuMediumComponent } from './components/menu-medium/menu-medium.component';

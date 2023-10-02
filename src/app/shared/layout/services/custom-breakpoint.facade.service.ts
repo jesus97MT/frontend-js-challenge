@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { CustomBreakpointState } from './custom-breakpoint-state.model';
-import { CustomBreakpoints } from './custom-breakpoints';
+import { CustomBreakpointState } from '../interfaces/custom-breakpoint-state.interface';
+import { CustomBreakpoints } from '../models/custom-breakpoints.model';
 
 @Injectable()
-export class CustomBreakpointObserver {
+export class CustomBreakpointFacadeService {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   get breakpointState$(): Observable<CustomBreakpointState> {

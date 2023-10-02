@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { delay } from 'rxjs/operators';
 
-import { CustomBreakpointObserver } from './layout';
+import { CustomBreakpointFacadeService } from './shared/layout';
 import { selectIsLoadingState } from './store/selectors';
 
 @Component({
@@ -19,7 +19,7 @@ export class AppComponent {
   isLoading$ = this.store.select(selectIsLoadingState).pipe(delay(0));
 
   constructor(
-    private breakpointsObserver: CustomBreakpointObserver,
+    private breakpointsObserver: CustomBreakpointFacadeService,
     private store: Store
   ) {}
 }
