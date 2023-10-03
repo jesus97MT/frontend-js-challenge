@@ -1,0 +1,17 @@
+<button
+  class="button"
+  [class.button__primary]="type === 'primary'"
+  [class.button__secondary]="type === 'secondary'"
+  [class.button__lightPrimary]="type === 'lightPrimary'"
+  [class.button__lightSecondary]="type === 'lightSecondary'"
+  [class.button__extraLarge]="size === 'extraLarge'"
+  [class.button__large]="size === 'large'"
+  [class.button__medium]="size === 'medium'"
+  [class.button__small]="size === 'small'"
+  [class.button__extraSmall]="size === 'extraSmall'"
+  [class.button__normal]="shape === 'normal'"
+  [class.button__rounded]="shape === 'rounded'"
+>
+  <img *ngIf="img" [src]="img" />
+  <ng-content></ng-content>
+</button>

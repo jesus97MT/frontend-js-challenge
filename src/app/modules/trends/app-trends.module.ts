@@ -12,6 +12,7 @@ import { TrendsListComponent } from './components/trends-list/trends-list.compon
 import { trendsFeatureKey, trendsReducer } from './store/reducers';
 import { trendsEffects } from './store/effects';
 import { TrendFacadeService } from './services/trend.facade.service';
+import { ButtonModule } from 'src/app/shared/button/button.module';
 
 @NgModule({
   declarations: [TrendsListComponent, TrendDetailComponent],
@@ -21,6 +22,7 @@ import { TrendFacadeService } from './services/trend.facade.service';
     HttpClientModule,
     StoreModule.forFeature(trendsFeatureKey, trendsReducer),
     EffectsModule.forFeature(trendsEffects),
+    ButtonModule,
   ],
   exports: [TrendsListComponent],
   providers: [

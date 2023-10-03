@@ -1,0 +1,118 @@
+@import "settings/variables";
+
+.button {
+  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  background: none;
+  border: 0;
+  color: inherit;
+  /* cursor: default; */
+  font-family: $font-family;
+  line-height: normal;
+  overflow: visible;
+  -webkit-user-select: none; /* for button */
+  -webkit-appearance: button; /* for input */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  background-color: $primary;
+  color: $font-color-light;
+  font-weight: 500;
+  cursor: pointer;
+
+  &__normal {
+    border-radius: 4px;
+  }
+  &__rounded {
+    border-radius: 50%;
+    > img {
+      padding: 0.25rem;
+      object-fit: contain;
+    }
+    &.button {
+      &__extraLarge {
+        padding: 1rem;
+        > img {
+          width: 40px;
+          padding: 0.2rem;
+        }
+      }
+      &__large {
+        padding: 0.75rem;
+        > img {
+          width: 30px;
+          padding: 0.15rem;
+        }
+      }
+      &__medium {
+        padding: 0.5rem;
+        > img {
+          width: 20px;
+          padding: 0.1rem;
+        }
+      }
+      &__small {
+        padding: 0.25rem;
+        > img {
+          width: 15px;
+          padding: 0.05rem;
+        }
+      }
+      &__extraSmall {
+        padding: 0.2rem;
+        > img {
+          width: 8px;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &__extraLarge {
+    padding: 1rem 1.5rem;
+    font-size: 20px;
+  }
+  &__large {
+    padding: 0.75rem 1.25rem;
+    font-size: 16px;
+  }
+  &__medium {
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+  }
+  &__small {
+    padding: 0.25rem 0.75rem;
+    font-size: 10px;
+  }
+  &__extraSmall {
+    padding: 0.15rem 0.5rem;
+    font-size: 8px;
+  }
+
+  &__primary {
+    background-color: $primary;
+    color: $font-color-light;
+  }
+  &__lightPrimary {
+    color: $font-color-secondary;
+    background-color: initial;
+    &:hover {
+      color: $font-color-light;
+      outline: 1px solid $accent;
+      background-color: $primary;
+    }
+  }
+  &__secondary {
+    background-color: $secondary;
+    color: $font-color-dark;
+  }
+  &__lightSecondary {
+    color: $font-color-secondary;
+    background-color: initial;
+    &:hover {
+      color: $font-color-dark;
+      outline: 1px solid $font-color-secondary;
+      background-color: $secondary;
+    }
+  }
+}
