@@ -37,10 +37,13 @@
 </article>
 
 <app-button
+  *ngIf="!slideOut?.isActive"
   class="trend__create-button"
   type="primary"
   size="large"
-  [img]="'assets/Iconos/Actions/edit.svg'"
+  shape="rounded"
+  img="assets/Iconos/Actions/add.svg"
+  (click)="isEdit = false; slideOut.toggleSlideOut()"
 ></app-button>
 
 <app-slide-out #slideOut>

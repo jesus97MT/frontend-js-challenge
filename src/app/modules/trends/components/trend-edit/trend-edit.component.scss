@@ -1,0 +1,31 @@
+@import "settings/variables";
+
+.trend-edit {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__title {
+      > h5 {
+        color: $font-color-dark;
+        font-size: 1rem;
+        margin: 0;
+      }
+    }
+    &__actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+}

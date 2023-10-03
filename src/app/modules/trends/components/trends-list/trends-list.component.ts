@@ -8,6 +8,7 @@ import { TrendFacadeService } from '../../services/trend.facade.service';
 })
 export class TrendsListComponent implements OnInit {
   protected trends$ = this.trendFacadeService.trends$;
+  public isEdit = false;
 
   constructor(private trendFacadeService: TrendFacadeService) {}
 

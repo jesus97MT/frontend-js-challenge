@@ -10,8 +10,20 @@
   </a>
 </article>
 
-<app-button (click)="slideOut.toggleSlideOut()" type="primary"
-  >Slide</app-button
->
+<app-button
+  *ngIf="!slideOut?.isActive"
+  class="trend__create-button"
+  type="primary"
+  size="large"
+  shape="rounded"
+  img="assets/Iconos/Actions/add.svg"
+  (click)="isEdit = false; slideOut.toggleSlideOut()"
+></app-button>
 
-<app-slide-out #slideOut><div></div></app-slide-out>
+<app-slide-out #slideOut>
+  <app-trend-edit
+    *ngIf="slideOut?.isActive"
+    [isEdit]="isEdit"
+    [trend]="null"
+  ></app-trend-edit>
+</app-slide-out>

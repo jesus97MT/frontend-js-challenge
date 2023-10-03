@@ -15,6 +15,7 @@ import { TrendFacadeService } from './services/trend.facade.service';
 import { ButtonModule } from 'src/app/shared/button/button.module';
 import { SlideOutModule } from 'src/app/shared/slide-out/slide-out.module';
 import { TrendEditComponent } from './components/trend-edit/trend-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [TrendsListComponent, TrendDetailComponent, TrendEditComponent],
@@ -26,6 +27,8 @@ import { TrendEditComponent } from './components/trend-edit/trend-edit.component
     EffectsModule.forFeature(trendsEffects),
     ButtonModule,
     SlideOutModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [TrendsListComponent],
   providers: [

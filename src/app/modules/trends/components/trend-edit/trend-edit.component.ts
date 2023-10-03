@@ -16,7 +16,7 @@ export class TrendEditComponent implements OnInit {
   public trendForm = new FormGroup({
     id: new FormControl<string>(''),
     title: new FormControl<string>(''),
-    body: new FormControl<string[]>(['']),
+    body: new FormControl<string>(''),
     provider: new FormControl<TrendProvider>('elmundo'),
     image: new FormControl<string>(''),
     url: new FormControl<string>(''),
@@ -29,7 +29,18 @@ export class TrendEditComponent implements OnInit {
     console.log(this.isEdit);
     console.log(this.trend);
     if (this.isEdit && this.trend) {
-      this.trendForm.setValue(this.trend);
+      const trend = { ...this.trend, body: this.trend.body.join('') };
+      this.trendForm.setValue(trend);
     }
+  }
+
+  public onSubmit(): void {
+    // const newSuperhero = this.superHeroForm.value as SuperheroInterface;
+    // if (this.data.new) {
+    //   this.superherosService.addSuperhero(newSuperhero);
+    // } else {
+    //   this.superherosService.editSuperhero(newSuperhero, this.data.idToEdit);
+    // }
+    // this.dialogRef.close();
   }
 }

@@ -1,3 +1,30 @@
-<p>
-  trend-edit works!
-</p>
+<form class="trend-edit" [formGroup]="trendForm" (ngSubmit)="onSubmit()">
+  <div class="trend-edit__header">
+    <div class="trend-edit__header__title">
+      <h5 *ngIf="isEdit">Editar noticia</h5>
+      <h5 *ngIf="!isEdit">Nueva noticia</h5>
+    </div>
+    <div class="trend-edit__header__actions">
+      <app-button type="lightSecondary">Cancelar</app-button>
+      <app-button type="primary">Guardar</app-button>
+    </div>
+  </div>
+  <div class="trend-edit__form">
+    <div class="trend-edit__form__input">
+      <label>URL</label>
+      <input type="text" formControlName="url" />
+    </div>
+    <div class="trend-edit__form__input">
+      <label>Provider</label>
+      <input type="text" formControlName="provider" />
+    </div>
+    <div class="trend-edit__form__input">
+      <label>Title</label>
+      <input type="title" formControlName="title" />
+    </div>
+    <div class="trend-edit__form__input">
+      <label>Contenido</label>
+      <textarea type="textarea" formControlName="body"></textarea>
+    </div>
+  </div>
+</form>
