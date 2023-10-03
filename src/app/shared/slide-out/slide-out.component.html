@@ -1,0 +1,8 @@
+<div
+  class="overlay"
+  [style.display]="isActive ? 'block' : 'none'"
+  (click)="toggleSlideOut()"
+></div>
+<div class="slide-out" [class.active]="isActive">
+  <ng-content></ng-content>
+</div>

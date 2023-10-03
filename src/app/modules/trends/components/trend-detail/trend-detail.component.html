@@ -5,10 +5,18 @@
 <article class="trend__detail" *ngIf="trend$ | async as trend">
   <header class="trend__header">
     <div class="trend__actions">
-      <button type="button" class="trend__action">
+      <button
+        type="button"
+        class="trend__action"
+        (click)="isEdit = true; slideOut.toggleSlideOut()"
+      >
         <img src="assets/Iconos/Actions/edit.svg" alt="Editar noticia" />
       </button>
-      <button type="button" class="trend__action">
+      <button
+        type="button"
+        class="trend__action"
+        (click)="isEdit = false; slideOut.toggleSlideOut()"
+      >
         <img src="assets/Iconos/Actions/delete.svg" alt="Borrar noticia" />
       </button>
     </div>
@@ -27,3 +35,18 @@
     </div>
   </div>
 </article>
+
+<app-button
+  class="trend__create-button"
+  type="primary"
+  size="large"
+  [img]="'assets/Iconos/Actions/edit.svg'"
+></app-button>
+
+<app-slide-out #slideOut>
+  <app-trend-edit
+    *ngIf="slideOut?.isActive"
+    [isEdit]="isEdit"
+    [trend]="isEdit ? (trend$ | async) : null"
+  ></app-trend-edit>
+</app-slide-out>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ButtonShape, ButtonSize, ButtonType } from 'src/app/types/button.type';
 
 @Component({
@@ -6,14 +6,14 @@ import { ButtonShape, ButtonSize, ButtonType } from 'src/app/types/button.type';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
   @Input() type: ButtonType = 'none';
+
   @Input() size: ButtonSize = 'medium';
+
   @Input() shape: ButtonShape = 'normal';
+
   @Input() color: string = '';
+
   @Input() img: string = '';
-
-  constructor() {}
-
-  ngOnInit() {}
 }

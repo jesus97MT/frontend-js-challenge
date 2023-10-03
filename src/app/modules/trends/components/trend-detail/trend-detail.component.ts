@@ -10,6 +10,7 @@ import { selectSelectedTrend } from '../../store/selectors';
 })
 export class TrendDetailComponent {
   protected trend$ = this.store.select(selectSelectedTrend);
+  public isEdit = false;
 
   constructor(private store: Store) {}
 }

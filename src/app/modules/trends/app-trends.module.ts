@@ -13,9 +13,11 @@ import { trendsFeatureKey, trendsReducer } from './store/reducers';
 import { trendsEffects } from './store/effects';
 import { TrendFacadeService } from './services/trend.facade.service';
 import { ButtonModule } from 'src/app/shared/button/button.module';
+import { SlideOutModule } from 'src/app/shared/slide-out/slide-out.module';
+import { TrendEditComponent } from './components/trend-edit/trend-edit.component';
 
 @NgModule({
-  declarations: [TrendsListComponent, TrendDetailComponent],
+  declarations: [TrendsListComponent, TrendDetailComponent, TrendEditComponent],
   imports: [
     CommonModule,
     AppTrendsRoutingModule,
@@ -23,6 +25,7 @@ import { ButtonModule } from 'src/app/shared/button/button.module';
     StoreModule.forFeature(trendsFeatureKey, trendsReducer),
     EffectsModule.forFeature(trendsEffects),
     ButtonModule,
+    SlideOutModule,
   ],
   exports: [TrendsListComponent],
   providers: [
