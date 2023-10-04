@@ -33,7 +33,7 @@ export class TrendEditComponent implements OnInit {
     if (this.isEdit && this.trend) {
       const trend: TrendFormGroup = {
         title: this.trend?.title,
-        body: this.trend?.body?.join(''),
+        body: this.trend?.body?.join('\n \n'),
         provider: this.trend?.provider,
         image: this.trend?.image,
         url: this.trend?.url,

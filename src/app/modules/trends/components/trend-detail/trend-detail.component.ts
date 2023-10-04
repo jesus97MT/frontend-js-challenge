@@ -32,6 +32,8 @@ export class TrendDetailComponent {
   }
 
   public onRemoveTrend(id: Trend['id']): void {
-    this.trendFacadeService.removeTrend(id);
+    if (confirm('¿Estas seguro que quieres elimiar esta noticia?')) {
+      this.trendFacadeService.removeTrend(id);
+    }
   }
 }

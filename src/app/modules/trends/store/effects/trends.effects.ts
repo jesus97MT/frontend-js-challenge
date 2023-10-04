@@ -1,5 +1,4 @@
 import { ToastService } from './../../../../shared/toast/services/toast.service';
-import { editTrend } from './../actions/trends.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import {
@@ -137,7 +136,7 @@ export class TrendsEffects {
           tap(() =>
             this.toastService.show(
               'Eliminar',
-              'Eliminar correctamente',
+              'Eliminado correctamente',
               5,
               ToastType.Success,
               ToastPosition.TopRight
