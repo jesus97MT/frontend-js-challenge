@@ -7,6 +7,7 @@ import { routerNavigationAction } from '@ngrx/router-store';
 
 import * as TrendsActions from '../actions/trends.actions';
 import { TrendService } from '../../services/trend.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class TrendsEffects {
@@ -60,5 +61,22 @@ export class TrendsEffects {
     );
   });
 
-  constructor(private actions$: Actions, private trendService: TrendService) {}
+  removeTrend$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TrendsActions.removeTrend),
+      mergeMap((data) =>
+        this.trendService.removeOne(data?.id).pipe(
+          map(() => this.router.navigate(['/trends'])),
+          map(() => TrendsActions.removeTrendSuccess()),
+          catchError(() => of(TrendsActions.editTrendError()))
+        )
+      )
+    );
+  });
+
+  constructor(
+    private actions$: Actions,
+    private trendService: TrendService,
+    private router: Router
+  ) {}
 }

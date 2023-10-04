@@ -40,10 +40,7 @@ export const editTrendError = createAction('[Trends] Edit Trend Error');
 
 export const removeTrend = createAction(
   '[Trends] Remove Trend',
-  props<{ trend: Trend }>()
+  props<{ id: Trend['id'] }>()
 );
-export const removeTrendSuccess = createAction(
-  '[Trends] Remove Trend Success',
-  props<{ trends: Trend[] }>()
-);
+export const removeTrendSuccess = createAction('[Trends] Remove Trend Success');
 export const removeTrendError = createAction('[Trends] Remove Trend Error');

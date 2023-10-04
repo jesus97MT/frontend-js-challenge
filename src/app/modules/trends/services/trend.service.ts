@@ -54,6 +54,12 @@ export class TrendService {
       .pipe(map(() => this.mapTrendFormGroupToTrendModel(trend)));
   }
 
+  public removeOne(id: Trend['id']): Observable<UpdateOneTrendResponse> {
+    const url = `${this.trendsUrl}/${id}`;
+
+    return this.httpClient.delete<UpdateOneTrendResponse>(url);
+  }
+
   private mapToTrendModel(trendResponse: TrendResponse): Trend {
     return {
       id: trendResponse._id,

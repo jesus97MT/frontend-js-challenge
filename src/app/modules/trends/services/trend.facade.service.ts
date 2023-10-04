@@ -5,6 +5,7 @@ import {
   loadTrends,
   createTrend,
   editTrend,
+  removeTrend,
 } from '../store/actions/trends.actions';
 import { selectTrendsByProvider } from '../store/selectors';
 import { Trend, TrendFormGroup } from '../interfaces/trend.interface';
@@ -18,10 +19,16 @@ export class TrendFacadeService {
   public loadTrends(): void {
     return this.store.dispatch(loadTrends());
   }
+
   public createTrend(trend: TrendFormGroup): void {
     return this.store.dispatch(createTrend({ trend }));
   }
+
   public editTrend(trend: TrendFormGroup, id: Trend['id']): void {
     return this.store.dispatch(editTrend({ trend, id }));
+  }
+
+  public removeTrend(id: Trend['id']): void {
+    return this.store.dispatch(removeTrend({ id }));
   }
 }

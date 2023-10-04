@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 
 import { selectSelectedTrend } from '../../store/selectors';
 import { SlideOutComponent } from 'src/app/shared/slide-out/slide-out.component';
+import { TrendFacadeService } from '../../services/trend.facade.service';
+import { Trend } from '../../interfaces/trend.interface';
 
 @Component({
   selector: 'app-trend-detail',
@@ -15,7 +17,10 @@ export class TrendDetailComponent {
 
   @ViewChild('slideOut') slideOut!: SlideOutComponent;
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store,
+    private trendFacadeService: TrendFacadeService
+  ) {}
 
   public onSlideOut(isEdit: boolean): void {
     this.isEdit = isEdit;
@@ -24,5 +29,9 @@ export class TrendDetailComponent {
 
   public onCancelEdit(): void {
     this.slideOut.toggleSlideOut();
+  }
+
+  public onRemoveTrend(id: Trend['id']): void {
+    this.trendFacadeService.removeTrend(id);
   }
 }
