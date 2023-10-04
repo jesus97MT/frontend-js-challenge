@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 
@@ -9,14 +9,12 @@ import { TrendProvider } from '../types/trend-provider.type';
 import { TrendResponse } from '../interfaces/trend-response.interface';
 import { environment } from 'src/environments/environment';
 import { UpdateOneTrendResponse } from '../interfaces/update-one-trend-response.interface';
-import { Update } from '@ngrx/entity';
 
 @Injectable()
 export class TrendService {
   private readonly urlBase = environment.avantioAPIHost;
 
-  public readonly trendsUrl = `/v1/trends`; // I used a proxy becouse i had a CORS error
-  //public readonly trendsUrl = `${this.urlBase}/v1/trends`;
+  public readonly trendsUrl = `${this.urlBase}/v1/trends`;
 
   constructor(private httpClient: HttpClient) {}
 

@@ -70,6 +70,24 @@ export class TrendsEffects {
     );
   });
 
+  createTrendError$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(TrendsActions.createTrendError),
+        tap(() =>
+          this.toastService.show(
+            'Error',
+            'Error creando trend',
+            5,
+            ToastType.Error,
+            ToastPosition.TopRight
+          )
+        )
+      );
+    },
+    { dispatch: false }
+  );
+
   editTrend$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(TrendsActions.editTrend),
@@ -90,6 +108,24 @@ export class TrendsEffects {
       )
     );
   });
+
+  editTrendError$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(TrendsActions.editTrendError),
+        tap(() =>
+          this.toastService.show(
+            'Error',
+            'Error editando trend',
+            5,
+            ToastType.Error,
+            ToastPosition.TopRight
+          )
+        )
+      );
+    },
+    { dispatch: false }
+  );
 
   removeTrend$ = createEffect(() => {
     return this.actions$.pipe(
@@ -112,6 +148,24 @@ export class TrendsEffects {
       )
     );
   });
+
+  removeTrendError$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(TrendsActions.removeTrendError),
+        tap(() =>
+          this.toastService.show(
+            'Error',
+            'Error borrando trend',
+            5,
+            ToastType.Error,
+            ToastPosition.TopRight
+          )
+        )
+      );
+    },
+    { dispatch: false }
+  );
 
   constructor(
     private actions$: Actions,

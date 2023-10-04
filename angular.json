@@ -61,6 +61,20 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "proxy": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.proxy.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -73,11 +87,13 @@
             },
             "development": {
               "browserTarget": "frontend-angular-challenge:build:development"
+            },
+            "proxy": {
+              "browserTarget": "frontend-angular-challenge:build:proxy",
+              "proxyConfig": "proxy.conf.json"
             }
           },
-          "options": {
-            "proxyConfig": "proxy.conf.json"
-          },
+
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
