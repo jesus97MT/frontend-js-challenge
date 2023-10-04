@@ -43,7 +43,12 @@ export class TrendEditComponent implements OnInit {
 
   public onSubmit(): void {
     const trend = this.trendForm.value as TrendFormGroup;
-    this.trendFacadeService.createTrend(trend);
+    if (this.isEdit) {
+      const id = this.trend?.id as Trend['id'];
+      this.trendFacadeService.editTrend(trend, id);
+    } else {
+      this.trendFacadeService.createTrend(trend);
+    }
     //console.log(this.trendForm.value);
   }
 

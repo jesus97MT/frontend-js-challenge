@@ -8,6 +8,8 @@ import { Trend, TrendFormGroup } from '../interfaces/trend.interface';
 import { TrendProvider } from '../types/trend-provider.type';
 import { TrendResponse } from '../interfaces/trend-response.interface';
 import { environment } from 'src/environments/environment';
+import { UpdateOneTrendResponse } from '../interfaces/update-one-trend-response.interface';
+import { Update } from '@ngrx/entity';
 
 @Injectable()
 export class TrendService {
@@ -40,6 +42,18 @@ export class TrendService {
       .pipe(map(({ trend }) => this.mapToTrendModel(trend)));
   }
 
+  public editOne(
+    trend: TrendFormGroup,
+    id: Trend['id']
+  ): Observable<Partial<Trend>> {
+    const url = `${this.trendsUrl}/${id}`;
+    const body = trend;
+
+    return this.httpClient
+      .put<UpdateOneTrendResponse>(url, body)
+      .pipe(map(() => this.mapTrendFormGroupToTrendModel(trend)));
+  }
+
   private mapToTrendModel(trendResponse: TrendResponse): Trend {
     return {
       id: trendResponse._id,
@@ -49,6 +63,16 @@ export class TrendService {
       provider: trendResponse.provider as TrendProvider,
       title: trendResponse.title,
       url: trendResponse.url,
+    };
+  }
+
+  private mapTrendFormGroupToTrendModel(trend: TrendFormGroup): Partial<Trend> {
+    return {
+      body: trend.body.split('\n\n'),
+      image: trend.image,
+      provider: trend.provider as TrendProvider,
+      title: trend.title,
+      url: trend.url,
     };
   }
 }

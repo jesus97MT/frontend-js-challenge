@@ -1,3 +1,4 @@
+import { editTrend } from './../actions/trends.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { catchError, filter, map, mergeMap, switchMap } from 'rxjs/operators';
@@ -41,7 +42,19 @@ export class TrendsEffects {
       mergeMap((data) =>
         this.trendService.createOne(data?.trend).pipe(
           map((trend) => TrendsActions.createTrendSuccess({ trend })),
-          catchError(() => of(TrendsActions.loadTrendsError()))
+          catchError(() => of(TrendsActions.createTrendError()))
+        )
+      )
+    );
+  });
+
+  editTrend$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TrendsActions.editTrend),
+      mergeMap((data) =>
+        this.trendService.editOne(data?.trend, data?.id).pipe(
+          map((trend) => TrendsActions.editTrendSuccess({ trend })),
+          catchError(() => of(TrendsActions.editTrendError()))
         )
       )
     );

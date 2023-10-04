@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { Trend, TrendFormGroup } from '../../interfaces/trend.interface';
+import { Update } from '@ngrx/entity';
 
 export const loadTrends = createAction('[Trends] Load Trends');
 export const loadTrendsSuccess = createAction(
@@ -29,11 +30,11 @@ export const createTrendError = createAction('[Trends] Create Trend Error');
 
 export const editTrend = createAction(
   '[Trends] Edit Trend',
-  props<{ trend: TrendFormGroup }>()
+  props<{ trend: TrendFormGroup; id: Trend['id'] }>()
 );
 export const editTrendSuccess = createAction(
   '[Trends] Edit Trend Success',
-  props<{ trend: Trend }>()
+  props<{ trend: Partial<Trend> }>()
 );
 export const editTrendError = createAction('[Trends] Edit Trend Error');
 
