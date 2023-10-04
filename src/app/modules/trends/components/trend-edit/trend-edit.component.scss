@@ -27,5 +27,26 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    margin-top: 2rem;
+    &__input {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      width: 100%;
+      > input,
+      textarea,
+      select {
+        width: 100%;
+      }
+      > label {
+        align-self: flex-start;
+        padding-bottom: 0.25rem;
+        color: $font-color-dark;
+      }
+      > textarea {
+        height: 200px;
+      }
+    }
   }
 }

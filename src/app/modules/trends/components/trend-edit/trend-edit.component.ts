@@ -3,6 +3,7 @@ import { Trend, TrendFormGroup } from '../../interfaces/trend.interface';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TrendProvider } from '../../types/trend-provider.type';
 import { TrendFacadeService } from '../../services/trend.facade.service';
+import { TrendProviders } from '../../models/trend-providers.model';
 
 @Component({
   selector: 'app-trend-edit',
@@ -24,11 +25,11 @@ export class TrendEditComponent implements OnInit {
     url: new FormControl<string>(''),
   });
 
+  public TrendProviders = TrendProviders;
+
   constructor(private trendFacadeService: TrendFacadeService) {}
 
   ngOnInit() {
-    console.log(this.isEdit);
-    console.log(this.trend);
     if (this.isEdit && this.trend) {
       const trend: TrendFormGroup = {
         title: this.trend?.title,
@@ -49,7 +50,7 @@ export class TrendEditComponent implements OnInit {
     } else {
       this.trendFacadeService.createTrend(trend);
     }
-    //console.log(this.trendForm.value);
+    this.cancel();
   }
 
   public cancel(): void {
