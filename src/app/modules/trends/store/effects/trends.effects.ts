@@ -1,13 +1,25 @@
+import { ToastService } from './../../../../shared/toast/services/toast.service';
 import { editTrend } from './../actions/trends.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import { catchError, filter, map, mergeMap, switchMap } from 'rxjs/operators';
+import {
+  catchError,
+  filter,
+  map,
+  mergeMap,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { routerNavigationAction } from '@ngrx/router-store';
 
 import * as TrendsActions from '../actions/trends.actions';
 import { TrendService } from '../../services/trend.service';
 import { Router } from '@angular/router';
+import {
+  ToastPosition,
+  ToastType,
+} from 'src/app/shared/toast/enums/toast.enum';
 
 @Injectable()
 export class TrendsEffects {
@@ -43,6 +55,15 @@ export class TrendsEffects {
       mergeMap((data) =>
         this.trendService.createOne(data?.trend).pipe(
           map((trend) => TrendsActions.createTrendSuccess({ trend })),
+          tap(() =>
+            this.toastService.show(
+              'Crear',
+              'Creado correctamente',
+              5,
+              ToastType.Success,
+              ToastPosition.TopRight
+            )
+          ),
           catchError(() => of(TrendsActions.createTrendError()))
         )
       )
@@ -55,6 +76,15 @@ export class TrendsEffects {
       mergeMap((data) =>
         this.trendService.editOne(data?.trend, data?.id).pipe(
           map((trend) => TrendsActions.editTrendSuccess({ trend })),
+          tap(() =>
+            this.toastService.show(
+              'Editar',
+              'Editado correctamente',
+              5,
+              ToastType.Success,
+              ToastPosition.TopRight
+            )
+          ),
           catchError(() => of(TrendsActions.editTrendError()))
         )
       )
@@ -68,6 +98,15 @@ export class TrendsEffects {
         this.trendService.removeOne(data?.id).pipe(
           map(() => this.router.navigate(['/trends'])),
           map(() => TrendsActions.removeTrendSuccess()),
+          tap(() =>
+            this.toastService.show(
+              'Eliminar',
+              'Eliminar correctamente',
+              5,
+              ToastType.Success,
+              ToastPosition.TopRight
+            )
+          ),
           catchError(() => of(TrendsActions.editTrendError()))
         )
       )
@@ -77,6 +116,7 @@ export class TrendsEffects {
   constructor(
     private actions$: Actions,
     private trendService: TrendService,
-    private router: Router
+    private router: Router,
+    private toastService: ToastService
   ) {}
 }

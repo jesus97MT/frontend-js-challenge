@@ -16,6 +16,7 @@ import { ButtonModule } from 'src/app/shared/button/button.module';
 import { SlideOutModule } from 'src/app/shared/slide-out/slide-out.module';
 import { TrendEditComponent } from './components/trend-edit/trend-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastService } from 'src/app/shared/toast/services/toast.service';
 
 @NgModule({
   declarations: [TrendsListComponent, TrendDetailComponent, TrendEditComponent],
@@ -34,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [
     TrendService,
     TrendFacadeService,
+    ToastService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

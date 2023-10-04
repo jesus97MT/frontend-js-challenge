@@ -17,6 +17,7 @@ import { reducers } from './store/reducers';
 
 import localeEs from '@angular/common/locales/es';
 import { LoaderFacadeService } from './services/loader.facade.service';
+import { ToastModule } from './shared/toast/toast.module';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -31,6 +32,7 @@ registerLocaleData(localeEs, 'es');
     AppRoutingModule,
     AppLayoutModule,
     AppMenuModule,
+    ToastModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
