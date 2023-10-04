@@ -6,13 +6,17 @@
     </div>
     <div class="trend-edit__header__actions">
       <app-button type="lightSecondary" (click)="cancel()">Cancelar</app-button>
-      <app-button type="primary">Guardar</app-button>
+      <app-button type="primary" typeButton="submit">Guardar</app-button>
     </div>
   </div>
   <div class="trend-edit__form">
     <div class="trend-edit__form__input">
       <label>URL</label>
       <input type="text" formControlName="url" />
+    </div>
+    <div class="trend-edit__form__input">
+      <label>Imagen</label>
+      <input type="text" formControlName="image" />
     </div>
     <div class="trend-edit__form__input">
       <label>Provider</label>

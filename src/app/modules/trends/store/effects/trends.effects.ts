@@ -35,5 +35,17 @@ export class TrendsEffects {
     );
   });
 
+  createTrend$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TrendsActions.createTrend),
+      mergeMap((data) =>
+        this.trendService.createOne(data?.trend).pipe(
+          map((trend) => TrendsActions.createTrendSuccess({ trend })),
+          catchError(() => of(TrendsActions.loadTrendsError()))
+        )
+      )
+    );
+  });
+
   constructor(private actions$: Actions, private trendService: TrendService) {}
 }

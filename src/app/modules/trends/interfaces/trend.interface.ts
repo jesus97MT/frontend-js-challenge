@@ -9,3 +9,11 @@ export interface Trend {
   url: string;
   createdAt: Date;
 }
+
+export interface TrendFormGroup {
+  title: string;
+  body: string;
+  provider: TrendProvider;
+  image: string;
+  url: string;
+}

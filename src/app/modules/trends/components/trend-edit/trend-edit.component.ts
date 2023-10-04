@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Trend } from '../../interfaces/trend.interface';
+import { Trend, TrendFormGroup } from '../../interfaces/trend.interface';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TrendProvider } from '../../types/trend-provider.type';
+import { TrendFacadeService } from '../../services/trend.facade.service';
 
 @Component({
   selector: 'app-trend-edit',
@@ -16,34 +17,34 @@ export class TrendEditComponent implements OnInit {
   @Output() onCancel = new EventEmitter();
 
   public trendForm = new FormGroup({
-    id: new FormControl<string>(''),
     title: new FormControl<string>(''),
     body: new FormControl<string>(''),
     provider: new FormControl<TrendProvider>('elmundo'),
     image: new FormControl<string>(''),
     url: new FormControl<string>(''),
-    createdAt: new FormControl<Date>(new Date()),
   });
 
-  constructor() {}
+  constructor(private trendFacadeService: TrendFacadeService) {}
 
   ngOnInit() {
     console.log(this.isEdit);
     console.log(this.trend);
     if (this.isEdit && this.trend) {
-      const trend = { ...this.trend, body: this.trend.body.join('') };
+      const trend: TrendFormGroup = {
+        title: this.trend?.title,
+        body: this.trend?.body?.join(''),
+        provider: this.trend?.provider,
+        image: this.trend?.image,
+        url: this.trend?.url,
+      };
       this.trendForm.setValue(trend);
     }
   }
 
   public onSubmit(): void {
-    // const newSuperhero = this.superHeroForm.value as SuperheroInterface;
-    // if (this.data.new) {
-    //   this.superherosService.addSuperhero(newSuperhero);
-    // } else {
-    //   this.superherosService.editSuperhero(newSuperhero, this.data.idToEdit);
-    // }
-    // this.dialogRef.close();
+    const trend = this.trendForm.value as TrendFormGroup;
+    this.trendFacadeService.createTrend(trend);
+    //console.log(this.trendForm.value);
   }
 
   public cancel(): void {

@@ -29,6 +29,9 @@ export const trendsReducer = createReducer(
   ),
   on(TrendsApiActions.loadOneTrendError, (state): TrendState => {
     return { ...state, selectedTrend: null };
+  }),
+  on(TrendsApiActions.createTrendSuccess, (state, { trend }): TrendState => {
+    return adapter.addOne(trend, state);
   })
 );
 

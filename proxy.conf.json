@@ -1,0 +1,7 @@
+{
+  "/v1": {
+    "target": "https://challenge.avantio.pro",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
