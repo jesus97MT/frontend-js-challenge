@@ -5,7 +5,7 @@
       <h5 *ngIf="!isEdit">Nueva noticia</h5>
     </div>
     <div class="trend-edit__header__actions">
-      <app-button type="lightSecondary">Cancelar</app-button>
+      <app-button type="lightSecondary" (click)="cancel()">Cancelar</app-button>
       <app-button type="primary">Guardar</app-button>
     </div>
   </div>

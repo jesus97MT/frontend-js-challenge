@@ -17,7 +17,7 @@
   size="large"
   shape="rounded"
   img="assets/Iconos/Actions/add.svg"
-  (click)="isEdit = false; slideOut.toggleSlideOut()"
+  (click)="onSlideOut(false)"
 ></app-button>
 
 <app-slide-out #slideOut>
@@ -25,5 +25,6 @@
     *ngIf="slideOut?.isActive"
     [isEdit]="isEdit"
     [trend]="null"
+    (onCancel)="onCancelEdit()"
   ></app-trend-edit>
 </app-slide-out>

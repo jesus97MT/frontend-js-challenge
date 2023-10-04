@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Trend } from '../../interfaces/trend.interface';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TrendProvider } from '../../types/trend-provider.type';
@@ -12,6 +12,8 @@ export class TrendEditComponent implements OnInit {
   @Input() isEdit: boolean = false;
 
   @Input() trend: Trend | null = null;
+
+  @Output() onCancel = new EventEmitter();
 
   public trendForm = new FormGroup({
     id: new FormControl<string>(''),
@@ -42,5 +44,9 @@ export class TrendEditComponent implements OnInit {
     //   this.superherosService.editSuperhero(newSuperhero, this.data.idToEdit);
     // }
     // this.dialogRef.close();
+  }
+
+  public cancel(): void {
+    this.onCancel.emit();
   }
 }
